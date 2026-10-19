@@ -70,6 +70,54 @@ The goal is to classify community discussions into four categories:
 
 - vendor_third_party_risk: Vendor evaluation, third-party security,
   supplier assessments, contracts, and vendor monitoring.
+  ### Real Community Post Examples
+
+#### ai_governance_policy
+
+1. Information Security Policy and Information Security Plan
+   https://security.stackexchange.com/questions/80193
+
+2. Writing an information security policy
+   https://security.stackexchange.com/questions/95116
+
+#### ai_security_risk
+
+1. What is the difference between a data leak and a data breach?
+   https://security.stackexchange.com/questions/229388
+
+2. Knowing when there has been a data breach from your database
+   https://security.stackexchange.com/questions/79816
+
+#### compliance_implementation
+
+1. How do I measure compliance to Information security policies?
+   https://security.stackexchange.com/questions/194068
+
+2. Any place where I can find some template or base documents for IT/Infosec Compliance?
+   https://security.stackexchange.com/questions/8997
+
+#### vendor_third_party_risk
+
+1. How can Huawei (or any other telecom vendor) provide verifiable security assurance?
+   https://security.stackexchange.com/questions/199398
+
+2. How to get medical vendors to take security seriously?
+   https://security.stackexchange.com/questions/244188
+
+  ### The Hardest Boundary
+
+**Labels:** ai_security_risk and compliance_implementation
+
+**Decision rule:**
+
+Discussions primarily about security threats, vulnerabilities,
+or potential data exposure belong to ai_security_risk.
+
+Discussions primarily about meeting regulations, implementing
+framework requirements, documenting controls, or preparing
+for audits belong to compliance_implementation.
+
+When both appear, the main question determines the label.
 
 ## The Dataset
 
@@ -83,6 +131,23 @@ The remaining candidates have not yet been reviewed.
 
 The dataset is preliminary. Source permissions for model-training
 use require further verification.
+
+### Three Difficult Labeling Cases
+
+**Case 1: How a risk assessment impacts information security policy?**
+- Possible labels: ai_governance_policy / ai_security_risk
+- Selected label: ai_governance_policy
+- Reason: The main focus is how risk assessment influences organizational security policies rather than identifying a specific security threat.
+
+**Case 2: Advice needed regarding Information Security Policy - EI3PA requirements**
+- Possible labels: ai_governance_policy / compliance_implementation
+- Selected label: compliance_implementation
+- Reason: Although the discussion involves security policy, the main concern appears to be meeting specific compliance requirements.
+
+**Case 3: How can Huawei (or any other telecom vendor) provide verifiable security assurance?**
+- Possible labels: vendor_third_party_risk / compliance_implementation
+- Selected label: vendor_third_party_risk
+- Reason: The discussion focuses on evaluating security assurances from an external technology supplier.
 
 ## The Training Run
 

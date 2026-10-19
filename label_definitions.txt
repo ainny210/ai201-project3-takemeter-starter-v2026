@@ -1,10 +1,4 @@
-# Your label definitions, one per line, as `label: definition`.
-#
-# Copy these from your README so the baseline is judged on exactly the
-# definitions you wrote. baseline.py reads this file.
-#
-# Delete the examples below and put yours in.
-
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+﻿ai_governance_policy: Discussions about organizational AI or technology governance, internal policies, responsibilities, approval processes, and oversight.
+ai_security_risk: Discussions about AI or technology security threats, privacy risks, sensitive data exposure, vulnerabilities, and security risk management.
+compliance_implementation: Discussions about compliance frameworks, regulatory requirements, audits, evidence collection, and implementing security or governance controls.
+vendor_third_party_risk: Discussions about evaluating, approving, monitoring, contracting with, or managing external technology and AI vendors.

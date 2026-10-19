@@ -22,8 +22,7 @@ These acceptance criteria were selected before model training.
 
 **Why this target:**
 
-[Write one sentence explaining why correctly classifying approximately
-73 out of 100 GRC discussions would be useful for your project.]
+I chose 72.5% because my project has four GRC categories, and I want the model to classify most discussions correctly. I think this is a reasonable starting target for a small dataset.
 
 ---
 
@@ -34,8 +33,7 @@ on the held-out test set.
 
 **Why this target:**
 
-[Write one sentence explaining why you chose a relatively modest
-minimum F1 score for all four GRC categories.]
+I chose 0.50 because some GRC topics are similar, especially security risk and compliance. Since the model may confuse these categories, I want a realistic minimum score for each label.
 
 ---
 
@@ -45,8 +43,7 @@ minimum F1 score for all four GRC categories.]
 
 **Why this target:**
 
-[Write one sentence explaining why you want sufficient examples
-from governance, security risk, compliance, and vendor risk.]
+I chose 40% because I don't want one category to dominate my dataset. My project has four labels, and I want the model to learn from governance, security, compliance, and vendor risk discussions.
 
 ---
 
@@ -57,8 +54,7 @@ from governance, security risk, compliance, and vendor risk.]
 
 **Why this target:**
 
-[Write one sentence explaining why consistent labeling matters,
-especially when security and compliance topics overlap.]
+I chose 90% because I want different people to classify the same discussions in a similar way. Some posts can fit more than one GRC category, so clear labeling rules are important.
 
 ---
 
@@ -69,8 +65,7 @@ above 77.5% should be correct on the held-out test set.
 
 **Why this target:**
 
-[Write one sentence explaining why you expect predictions
-with higher confidence to be more reliable.]
+I chose 80% accuracy for predictions above 77.5% confidence because I want the model's confident predictions to be more reliable. This could help reduce the number of posts that need manual checking.
 
 ---
 

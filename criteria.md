@@ -1,143 +1,100 @@
-# Acceptance criteria — TakeMeter
+# Acceptance Criteria — TakeMeter
 
-Five criteria that say what "working" means for this classifier, written in
-unit 5 **before** anything was trained.
+## Project Overview
 
-**All five are yours this time.** None are given. You've had two projects of
-practice.
+TakeMeter is a text classification project focused on AI and
+Technology Governance, Risk, and Compliance (GRC).
 
-An acceptance criterion names a number. *"The model is accurate"* is an
-opinion. *"Every label has an F1 of at least 0.60 on the held-out set"* is a
-criterion.
+The classifier uses four categories:
 
-Under each, write a sentence or two on **why that number**. A reason that says
-something about your data or your taxonomy earns credit — *"I picked 0.60 F1
-for `reaction` because it's my smallest label and I only have about 50
-examples of it"*. A reason that could be attached to any project does not.
+1. ai_governance_policy
+2. ai_security_risk
+3. compliance_implementation
+4. vendor_third_party_risk
 
-> Missing your own targets next unit costs you nothing. Setting a target so
-> easy you can't miss it does.
+These acceptance criteria define what successful performance
+would look like before training the classifier.
 
 ---
 
-## Pick numbers you can defend
+## How I Selected My Criteria
 
-Not numbers that sound impressive. Three labels means a coin-flip guesser gets
-about 33%, so a target of 0.40 is barely a target. Your number should sit
-somewhere you'd honestly call useful.
-
-**Cover at least three of these five areas.** They're here as prompts, not as a
-form to fill in — a criterion that fits none of them is fine if it names a
-number.
-
-| Area | A question it could answer |
+| Criterion | How to Choose |
 |---|---|
-| Overall accuracy | How often does it need to be right to be worth using? |
-| Per-label performance | Is one label allowed to be much worse than the others? |
-| Balance | How lopsided can your label counts get before it's a problem? |
-| Consistency | If someone else labelled the same posts, how often should you agree? |
-| Confidence | Should a confident prediction be right more often than an unsure one? |
-
-Two things worth knowing before you pick numbers, because both will affect
-whether you hit them:
-
-- **Your smallest label will have the jumpiest score.** If a label has 50
-  examples, about 8 land in the test split. An F1 computed on 8 examples moves
-  a lot between seeds. A target for that label should be looser than one for
-  your biggest label, and saying so is a good reason.
-- **Unit 6 tests across three seeds, and the target has to hold across all
-  three.** A target of 0.65 against results of 0.71, 0.62, 0.68 is a **miss**.
-  Pick with that in mind — it is stricter than it first sounds.
+| Overall Accuracy | Decide how many out of 100 posts the classifier should correctly categorize. |
+| Per-Label F1 Score | Choose the minimum acceptable F1 score for each of the four categories. |
+| Class Balance | Decide the maximum percentage of examples belonging to one category. The assignment limit is 70%. |
+| Labeling Consistency | Decide how frequently two independent reviewers should assign the same label. |
+| Prediction Confidence | Decide the confidence threshold and the required accuracy of predictions above that threshold. |
 
 ---
 
-## 1.
+## 1. Overall Accuracy
 
-<!-- Your criterion. It must name a number. -->
-
-
+**Target:** At least [CHOOSE NUMBER]% accuracy on the held-out test set.
 
 **Why this target:**
 
-
+[Explain how many correct predictions out of 100 would make
+the GRC classifier useful for organizing discussions.]
 
 ---
 
-## 2.
+## 2. Per-Label F1 Score
 
-<!-- Your criterion. -->
-
-
+**Target:** Every label must achieve an F1 score of at least [CHOOSE NUMBER].
 
 **Why this target:**
 
-
+[Explain why the classifier needs to recognize all four GRC
+categories rather than performing well on only one category.]
 
 ---
 
-## 3.
+## 3. Class Balance
 
-<!-- Your criterion. -->
-
-
+**Target:** No single label should exceed [CHOOSE NUMBER]% of the dataset.
 
 **Why this target:**
 
-
+[Explain why sufficient examples are needed for governance,
+security risk, compliance, and vendor risk.]
 
 ---
 
-## 4.
+## 4. Labeling Consistency
 
-<!-- Your criterion. -->
-
-
+**Target:** Two independent reviewers should agree on at least
+[CHOOSE NUMBER]% of the same posts.
 
 **Why this target:**
 
-
+[Explain why different reviewers might disagree about whether
+a discussion concerns security risk or compliance implementation.]
 
 ---
 
-## 5.
+## 5. Prediction Confidence
 
-<!-- Your criterion. -->
-
-
+**Target:** At least [CHOOSE NUMBER]% of predictions with confidence
+above [CHOOSE NUMBER]% should be correct.
 
 **Why this target:**
 
-
+[Explain why high-confidence predictions should be more
+reliable than uncertain predictions.]
 
 ---
 
-<!-- ─────────────────────────────────────────────────────────────────────────
-     UNIT 6 — read this before you change anything above.
+<!--
+UNIT 6 — IMPORTANT
 
-     If a criterion turns out to be BROKEN rather than merely unmet, you can
-     revise it, and that earns credit. But never delete or edit the original
-     line. Add the revision underneath, like this:
+Do not delete or overwrite the original acceptance criteria.
 
-         ## 2. Every label performs acceptably
+If a criterion cannot be measured, add a revision underneath
+the original criterion and explain why it was revised.
 
-         The model performs well on all labels.
+Do not lower a target simply because the model failed to meet it.
 
-         **Why this target:** ...
-
-         > **Revised in unit 6:** Every label has an F1 of at least 0.60 on
-         > the held-out set.
-         >
-         > **Why revised:** "performs well" gave me nothing to check. I
-         > couldn't produce a verdict from it at all.
-
-     That's a revision because the criterion couldn't be MEASURED.
-
-     Lowering a target because you missed it is not a revision, and it costs
-     you the point:
-
-         ✗ "Overall accuracy of at least 0.65" → "at least 0.55", because
-            0.65 turned out to be optimistic for 200 examples.
-
-     A number you missed stays where it is, gets diagnosed, and gets a fix
-     attempted. That's where the points are.
-     ───────────────────────────────────────────────────────────────────────── -->
+Unit 6 evaluates the targets across three training seeds.
+-->

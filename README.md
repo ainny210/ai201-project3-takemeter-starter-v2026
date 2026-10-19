@@ -43,143 +43,66 @@
      sentences. -->
 
 
+# TakeMeter — AI & Technology GRC Discussion Classifier
 
----
+## What This Does
+
+TakeMeter is a text classification project focused on AI and
+Technology Governance, Risk, and Compliance (GRC).
+
+The goal is to classify community discussions into four categories:
+
+1. AI Governance and Policy
+2. AI Security Risk
+3. Compliance Implementation
+4. Vendor and Third-Party Risk
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+- ai_governance_policy: Organizational governance, security policies,
+  responsibilities, approvals, and oversight.
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
+- ai_security_risk: Security threats, privacy risks, vulnerabilities,
+  sensitive data exposure, and risk management.
 
-### `label_one`
+- compliance_implementation: Compliance frameworks, regulations,
+  audits, evidence collection, and security controls.
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### The hardest boundary
-
-**Which two labels:**
-
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
-
-
-
----
+- vendor_third_party_risk: Vendor evaluation, third-party security,
+  supplier assessments, contracts, and vendor monitoring.
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+The project collected 822 candidate discussions from the
+Information Security Stack Exchange API.
 
-**Where the posts came from:**
+An initial relevance review identified 21 potentially relevant
+discussions and excluded 11.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+The remaining candidates have not yet been reviewed.
 
-**Counts per label:**
-
-| Label | Count | Share |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
-
-**Three hard cases**
-
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
-**1.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
-
-**2.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
-
-**3.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
-
----
+The dataset is preliminary. Source permissions for model-training
+use require further verification.
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
-
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
-
-**Anything I changed from the defaults, and why:**
-
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
-
-
-
----
+This section will document the model configuration, training settings,
+dataset splits, and evaluation results.
+The project currently includes data collection, relevance
+screening, and a four-category label taxonomy.
 
 ## How I Used AI
 
-<!-- Two specific moments — what you asked, what came back, what you changed.
+AI assistance was used to:
 
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
+1. Develop the data collection workflow and Python commands.
+2. Review the relevance of selected community discussions.
 
-**Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
 
-**Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
 
-**Pre-labelling disclosure:**
-
-<!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
-
-     Don't fill these in during unit 5.
-     ═══════════════════════════════════════════════════════════════════ -->
-
----
 
 ## Baseline vs. Trained
 

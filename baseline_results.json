@@ -1,0 +1,55 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 3,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 3,
+    "accuracy": 0.0,
+    "f1_macro": 0.0,
+    "per_label": {
+      "ai_governance_policy": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2
+      },
+      "ai_security_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "compliance_implementation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "vendor_third_party_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Information Security Policy and Information Security Plan",
+      "gold": "ai_governance_policy",
+      "predicted": "compliance_implementation"
+    },
+    {
+      "text": "Which self assessment questionairre should I use for PCI DSS compliance",
+      "gold": "ai_governance_policy",
+      "predicted": "compliance_implementation"
+    },
+    {
+      "text": "how much security measure information is safe to publicize?",
+      "gold": "vendor_third_party_risk",
+      "predicted": "ai_governance_policy"
+    }
+  ]
+}

@@ -287,13 +287,47 @@ A zero F1 score should be interpreted carefully when a class has no support in a
 
 ### Confusion Matrix
 
-A verified confusion-matrix table has not been included because the exact true-label/predicted-label counts were not available in the recorded summary.
+The following confusion matrix was generated from the initial trained DistilBERT model using seed 42 and three held-out test examples.
 
-The underlying evaluation artifacts should be used to reconstruct the matrix rather than inventing counts.
+Rows represent actual labels, and columns represent predicted labels.
 
-**Largest off-diagonal error:** Not established from the available summary.
+| Actual / Predicted | AI Governance | AI Security Risk | Compliance | Vendor Risk |
+| ------------------ | ------------: | ---------------: | ---------: | ----------: |
+| AI Governance      |             2 |                0 |          0 |           0 |
+| AI Security Risk   |             0 |                0 |          0 |           0 |
+| Compliance         |             0 |                0 |          0 |           0 |
+| Vendor Risk        |             1 |                0 |          0 |           0 |
 
-This prevents a defensible claim about which specific label boundary produced the largest number of errors.
+**Total test examples:** 3
+**Correct predictions:** 2
+**Incorrect predictions:** 1
+**Accuracy:** 66.7%
+
+#### Largest Off-Diagonal Error
+
+The largest off-diagonal value is **1**, representing a `vendor_third_party_risk` discussion incorrectly classified as `ai_governance_policy`.
+
+This indicates that the model failed to distinguish vendor security oversight from broader organizational governance in this example.
+
+Both categories can involve policies, responsibilities, and security assurance. However, the taxonomy specifies that discussions primarily evaluating external suppliers belong to `vendor_third_party_risk`.
+
+The model instead predicted `ai_governance_policy`.
+
+#### What This Error Suggests
+
+The model correctly classified both governance examples but failed to recognize the vendor-risk example.
+
+This is consistent with the dataset imbalance:
+
+* AI Governance: 8 labeled examples.
+* Vendor Risk: 3 labeled examples.
+
+The small number of vendor-risk training examples may have contributed to this error, although one misclassification cannot establish its exact cause.
+
+Neither AI Security Risk nor Compliance Implementation appeared in this particular test split. Therefore, their zero confusion-matrix rows do not demonstrate successful or unsuccessful classification of those categories.
+
+**Conclusion:** The confusion matrix provides evidence of a governance-versus-vendor-risk classification error. A larger and more representative test set is necessary to determine whether this error pattern is systematic.
+
 
 ---
 

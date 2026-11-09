@@ -1,4 +1,4 @@
-﻿ai_governance_policy: Discussions about organizational AI or technology governance, internal policies, responsibilities, approval processes, and oversight.
-ai_security_risk: Discussions about AI or technology security threats, privacy risks, sensitive data exposure, vulnerabilities, and security risk management.
-compliance_implementation: Discussions about compliance frameworks, regulatory requirements, audits, evidence collection, and implementing security or governance controls.
-vendor_third_party_risk: Discussions about evaluating, approving, monitoring, contracting with, or managing external technology and AI vendors.
+﻿ai_governance_policy: Organizational governance policies, security policies, AI oversight, accountability, and acceptable-use rules.
+ai_security_risk: Security threats, vulnerabilities, attack scenarios, and technical risk assessments involving AI or information systems.
+compliance_implementation: Implementing security controls, audit requirements, regulatory obligations, and compliance procedures.
+vendor_third_party_risk: Supplier assessments, vendor security, third-party access, outsourcing, and external service-provider risks.

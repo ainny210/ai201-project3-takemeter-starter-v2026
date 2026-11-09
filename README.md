@@ -15,7 +15,7 @@ The four categories are:
 
 The project evaluates classification accuracy, macro F1, per-label F1, reproducibility across three random seeds, and performance relative to a zero-shot baseline.
 
-The objective is not simply to train a classifier, but to evaluate whether its performance is reliable enough for the intended classification task.
+The objective is not simply to train a classifier but to evaluate whether its performance is reliable enough for the intended classification task.
 
 ---
 
@@ -51,35 +51,23 @@ Discussions about evaluating suppliers, third-party security assurance, vendor a
 
 ### AI Governance and Policy
 
-1. Information Security Policy and Information Security Plan
-   Security Stack Exchange question 80193
-
-2. Writing an information security policy
-   Security Stack Exchange question 95116
+1. Information Security Policy and Information Security Plan — Security Stack Exchange question 80193.
+2. Writing an information security policy — Security Stack Exchange question 95116.
 
 ### AI Security Risk
 
-1. What is the difference between a data leak and a data breach?
-   Security Stack Exchange question 229388
-
-2. Knowing when there has been a data breach from your database
-   Security Stack Exchange question 79816
+1. What is the difference between a data leak and a data breach? — Security Stack Exchange question 229388.
+2. Knowing when there has been a data breach from your database — Security Stack Exchange question 79816.
 
 ### Compliance Implementation
 
-1. How do I measure compliance to information security policies?
-   Security Stack Exchange question 194068
-
-2. Any place where I can find some template or base documents for IT/Infosec Compliance?
-   Security Stack Exchange question 8997
+1. How do I measure compliance to information security policies? — Security Stack Exchange question 194068.
+2. Any place where I can find some template or base documents for IT/Infosec Compliance? — Security Stack Exchange question 8997.
 
 ### Vendor and Third-Party Risk
 
-1. How can Huawei (or any other telecom vendor) provide verifiable security assurance?
-   Security Stack Exchange question 199398
-
-2. How to get medical vendors to take security seriously?
-   Security Stack Exchange question 244188
+1. How can Huawei (or any other telecom vendor) provide verifiable security assurance? — Security Stack Exchange question 199398.
+2. How to get medical vendors to take security seriously? — Security Stack Exchange question 244188.
 
 ## The Hardest Boundary
 
@@ -95,7 +83,7 @@ These categories overlap because compliance requirements frequently involve secu
 
 For example, a question about preventing unauthorized database access belongs to AI Security Risk, while a question about documenting database access controls for an audit belongs to Compliance Implementation.
 
-This distinction is important because classification should reflect the discussion's main purpose rather than the presence of individual security-related keywords.
+This distinction is important because classification should reflect the discussion's main purpose rather than individual security-related keywords.
 
 ---
 
@@ -105,7 +93,7 @@ The project collected **822 candidate discussions** from the Information Securit
 
 An initial relevance review identified 21 potentially relevant discussions and excluded 11.
 
-The current labeled dataset contains **20 manually labeled examples**.
+The current GRC dataset contains **20 manually labeled examples**.
 
 ### Label Distribution
 
@@ -119,9 +107,9 @@ The current labeled dataset contains **20 manually labeled examples**.
 
 The dataset is imbalanced. Governance and compliance discussions account for 75% of labeled examples.
 
-The project has not yet reached the assignment's minimum requirement of 150 labeled examples.
+**Dataset limitation:** The project has not reached the assignment's minimum requirement of 150 labeled GRC examples.
 
-Consequently, the evaluation should be treated as preliminary rather than evidence of production readiness.
+The evaluation should therefore be treated as preliminary rather than evidence of production readiness.
 
 Source permissions for model-training use also require further verification.
 
@@ -134,9 +122,9 @@ Possible labels:
 * `ai_governance_policy`
 * `ai_security_risk`
 
-Selected label: `ai_governance_policy`
+**Selected label:** `ai_governance_policy`
 
-Reason: The primary focus is how risk assessment informs organizational policy, rather than a specific technical threat.
+**Reason:** The primary focus is how risk assessment informs organizational policy rather than a specific technical threat.
 
 **Case 2: Advice needed regarding Information Security Policy — EI3PA requirements**
 
@@ -145,9 +133,9 @@ Possible labels:
 * `ai_governance_policy`
 * `compliance_implementation`
 
-Selected label: `compliance_implementation`
+**Selected label:** `compliance_implementation`
 
-Reason: Although the discussion involves security policy, its main purpose is satisfying compliance requirements.
+**Reason:** Although the discussion involves security policy, its main purpose is satisfying compliance requirements.
 
 **Case 3: How can Huawei (or any other telecom vendor) provide verifiable security assurance?**
 
@@ -156,9 +144,9 @@ Possible labels:
 * `vendor_third_party_risk`
 * `compliance_implementation`
 
-Selected label: `vendor_third_party_risk`
+**Selected label:** `vendor_third_party_risk`
 
-Reason: The question focuses on evaluating the security assurance of an external supplier.
+**Reason:** The question focuses on evaluating the security assurance of an external supplier.
 
 ---
 
@@ -203,8 +191,8 @@ The initial model was trained for three epochs.
 
 For seed 42, the held-out test results were:
 
-* Accuracy: **0.667**
-* Macro F1: **0.400**
+* **Accuracy:** 0.667
+* **Macro F1:** 0.400
 
 The initial evaluation demonstrated that the model could classify some held-out examples correctly, but performance varied substantially across seeds.
 
@@ -299,8 +287,11 @@ Rows represent actual labels, and columns represent predicted labels.
 | Vendor Risk        |             1 |                0 |          0 |           0 |
 
 **Total test examples:** 3
+
 **Correct predictions:** 2
+
 **Incorrect predictions:** 1
+
 **Accuracy:** 66.7%
 
 #### Largest Off-Diagonal Error
@@ -328,20 +319,19 @@ Neither AI Security Risk nor Compliance Implementation appeared in this particul
 
 **Conclusion:** The confusion matrix provides evidence of a governance-versus-vendor-risk classification error. A larger and more representative test set is necessary to determine whether this error pattern is systematic.
 
-
 ---
 
 ## Verdicts and Diagnoses
 
 The following verdicts use the original acceptance criteria. The targets have not been lowered after observing the results.
 
-| # | Criterion                           | Original Target                            | Verdict          | Evidence                                                       |
-| - | ----------------------------------- | ------------------------------------------ | ---------------- | -------------------------------------------------------------- |
-| 1 | Held-out accuracy                   | At least 72.5% for every seed              | **MISSED**       | Accuracies were 66.7%, 0%, and 33.3%                           |
-| 2 | Per-label held-out F1               | At least 0.50 for every label across seeds | **MISSED**       | Multiple categories had F1 of 0                                |
-| 3 | Label distribution                  | No category above 40%                      | **MET**          | Largest category represents exactly 40%                        |
-| 4 | Independent reviewer agreement      | At least 90%                               | **NOT MEASURED** | Independent review and agreement results are not available     |
-| 5 | High-confidence prediction accuracy | At least 80% when confidence exceeds 77.5% | **NOT MEASURED** | Required confidence-filtered results have not been established |
+| # | Criterion                           | Original Target                            | Verdict                   | Evidence                                        |
+| - | ----------------------------------- | ------------------------------------------ | ------------------------- | ----------------------------------------------- |
+| 1 | Held-out accuracy                   | At least 72.5% for every seed              | **MISSED**                | Accuracies were 66.7%, 0%, and 33.3%            |
+| 2 | Per-label held-out F1               | At least 0.50 for every label across seeds | **MISSED**                | Multiple categories had F1 of 0                 |
+| 3 | Label distribution                  | No category above 40%                      | **MET**                   | Largest category represents exactly 40%         |
+| 4 | Independent reviewer agreement      | At least 90%                               | **MET ON STAFF EXERCISE** | 30/30 staff-label matches; 100% agreement       |
+| 5 | High-confidence prediction accuracy | At least 80% when confidence exceeds 77.5% | **NOT ESTABLISHED**       | Confidence-filtered accuracy was not calculated |
 
 ### Criterion 1 — Accuracy
 
@@ -387,23 +377,56 @@ However, satisfying this numerical threshold does not mean the dataset is suffic
 
 ### Criterion 4 — Reviewer Agreement
 
-**Verdict: NOT MEASURED**
+**Verdict: MET ON THE STAFF-LABELING EXERCISE**
 
-The required independent labeling comparison has not been completed.
+I completed the separate staff taxonomy evaluation involving 30 posts.
 
-Without agreement results, it is not possible to determine whether the label definitions are being applied consistently by different reviewers.
+The staff taxonomy contained three categories:
 
-**Recommended revision:** Complete the staff taxonomy labeling exercise, calculate agreement, and adjudicate disagreements using the written taxonomy rules.
+* `analysis`
+* `hot_take`
+* `reaction`
+
+After labeling the posts, I compared my annotations with the official staff labels using `agreement.py`.
+
+The comparison produced:
+
+* **Posts compared:** 30
+* **Agreements:** 30
+* **Disagreements:** 0
+* **Agreement rate:** 100%
+
+The result exceeds the original 90% agreement threshold when applied to the staff exercise.
+
+**Important distinction:** This evaluation used the staff's running-discussion taxonomy rather than the project's four-category GRC taxonomy. Therefore, it demonstrates agreement with the staff labels on the supplied exercise but does not establish independent reviewer agreement for the 20 GRC examples.
+
+**Recommended revision:** Conduct a separate independent labeling review of the GRC dataset when more labeled examples are available.
 
 ### Criterion 5 — High-Confidence Accuracy
 
-**Verdict: NOT MEASURED**
+**Verdict: NOT ESTABLISHED**
 
-The required accuracy calculation for predictions above 77.5% confidence has not been established.
+The original criterion required at least 80% accuracy for predictions with confidence greater than 77.5%.
 
-Overall accuracy cannot be substituted for confidence-filtered accuracy.
+The saved evaluation produced the following confidence statistics:
 
-**Recommended revision:** Save prediction probabilities, filter predictions above the original confidence threshold, and calculate accuracy on that subset.
+| Metric                                        |   Result |
+| --------------------------------------------- | -------: |
+| Mean confidence when prediction was correct   | 0.264373 |
+| Mean confidence when prediction was incorrect | 0.264172 |
+| Accuracy of most confident third              |    1.000 |
+| Accuracy of least confident third             |    1.000 |
+| Examples per confidence third                 |        1 |
+
+These results show that the model assigned similarly low average confidence to correct and incorrect predictions.
+
+However, the accuracy of the most confident third is not equivalent to accuracy above the predefined 77.5% threshold.
+
+The saved summary does not identify the number of predictions exceeding 77.5% confidence.
+
+Therefore, the original confidence-filtered acceptance criterion cannot be conclusively evaluated from these summary statistics.
+
+**Recommended revision:** Save the confidence of every held-out prediction, filter predictions with confidence greater than 0.775, and calculate accuracy on the qualifying subset. If no predictions qualify, report the subset as empty rather than claiming that the threshold was met.
 
 ---
 
@@ -423,8 +446,8 @@ This is consistent with the unstable three-seed results.
 
 The dataset contains only:
 
-* 2 examples of `ai_security_risk`
-* 3 examples of `vendor_third_party_risk`
+* 2 examples of `ai_security_risk`.
+* 3 examples of `vendor_third_party_risk`.
 
 These categories are substantially underrepresented.
 
@@ -436,7 +459,9 @@ Governance, security risk, and compliance frequently overlap.
 
 For example, a discussion about security policy may focus on governance responsibilities, implementation of regulatory controls, or a specific security risk.
 
-The taxonomy uses the primary purpose of the question as its decision rule, but agreement testing is still needed to determine whether different reviewers apply that rule consistently.
+The taxonomy uses the primary purpose of the question as its decision rule.
+
+The separate staff-labeling exercise achieved 100% agreement, but it used a different taxonomy. It therefore cannot resolve whether independent reviewers would consistently apply the project's GRC-specific label definitions.
 
 ### Diagnosis 4 — Unstable Evaluation
 
@@ -460,28 +485,148 @@ This suggests that simply training longer is insufficient under the current data
 
 ## Agreement Report
 
-**Agreement rate:** Not measured.
+### Staff Taxonomy Evaluation
 
-The required staff agreement exercise has not been completed.
+I completed the staff-labeling exercise using the supplied taxonomy and decision rules.
 
-The project has not yet produced a verified `agreement_results.json` containing a comparison between independently assigned labels and the staff reference labels.
+The evaluation required labeling 30 fictional running-forum posts into three categories:
 
-### Disagreements
+| Label      | Definition                                                                           |
+| ---------- | ------------------------------------------------------------------------------------ |
+| `analysis` | An argument supported by a specific, checkable fact that contributes to the argument |
+| `hot_take` | A confident general claim without supporting evidence                                |
+| `reaction` | An immediate personal response to a recent event or experience                       |
 
-No staff disagreements have been adjudicated.
+The taxonomy also provided rules for resolving ambiguous cases.
 
-It would be misleading to report an agreement percentage or disagreement explanations without the actual comparison.
+The key distinctions were:
 
-### What This Means for the Diagnosis
+1. A numerical fact makes a post `analysis` only when the fact supports the argument.
+2. A personal emotional response is generally `reaction`, while an unsupported general claim is `hot_take`.
+3. A recent event does not automatically make a post `reaction` when the post contains an evidence-supported argument.
+4. When two labels remain defensible, the dominant purpose of the post determines the label.
 
-The model's poor performance is documented, but the available evidence cannot fully distinguish between:
+### My Label Distribution
 
-1. Inconsistent human labeling.
-2. Ambiguous taxonomy definitions.
-3. Insufficient training data.
-4. Model generalization failure.
+| Label      |  Count |
+| ---------- | -----: |
+| `analysis` |     10 |
+| `hot_take` |     10 |
+| `reaction` |     10 |
+| **Total**  | **30** |
 
-A completed agreement report is necessary to investigate these possibilities more confidently.
+### Agreement Results
+
+After completing the labeling exercise, I compared my labels with the official staff reference using:
+
+`python agreement.py`
+
+The script generated `agreement_results.json`.
+
+The verified results were:
+
+| Metric                             |   Result |
+| ---------------------------------- | -------: |
+| Posts compared                     |       30 |
+| Agreements                         |       30 |
+| Disagreements                      |        0 |
+| Agreement rate                     | **100%** |
+| Staff posts missing from my labels |        0 |
+
+The JSON output was:
+
+```json
+{
+  "compared": 30,
+  "agreed": 30,
+  "agreement_rate": 1.0,
+  "disagreements": [],
+  "staff_posts_not_in_mine": 0
+}
+```
+
+### Interpretation
+
+The results demonstrate that my annotations matched the official staff labels for all 30 supplied examples.
+
+The distinction between evidence-supported arguments, unsupported general claims, and immediate personal reactions was useful when applying the taxonomy.
+
+Some posts required closer attention because they included numbers or factual details without necessarily being evidence-supported arguments.
+
+For example:
+
+**Post `sp_014`:**
+
+"Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem."
+
+**Assigned label:** `hot_take`
+
+Although the post includes a statistic, it makes a broad causal claim without demonstrating that the shoes alone caused the change. The statistic functions more as support for a predetermined opinion than as a developed argument.
+
+**Post `sp_027`:**
+
+"Wind was so bad on the out section I was leaning at about 20 degrees. Coming back felt like cheating."
+
+**Assigned label:** `reaction`
+
+The post contains a numerical detail, but its primary purpose is to describe a recent personal experience rather than make an evidence-supported general argument.
+
+**Post `sp_029`:**
+
+"Just realised the shoes I set every PB in this year are the ones I bought by accident in the wrong size."
+
+**Assigned label:** `reaction`
+
+The post primarily expresses an immediate personal realization. It does not use the observation to develop a broader argument.
+
+### Disagreement Adjudication
+
+The agreement script reported:
+
+**Disagreements: 0**
+
+Therefore, no disagreements required adjudication.
+
+The exercise instructions identified three possible disagreement types:
+
+1. **Consistency problem:** An existing rule was sufficient, but the reviewer applied it incorrectly.
+2. **Definition gap:** The taxonomy did not adequately address the case.
+3. **Defensible ambiguity:** Multiple interpretations were possible, and the reviewer's interpretation could be supported by the written rules.
+
+No cases fell into these categories in the completed comparison.
+
+### Was the Set Easy, or Were the Rules Clear?
+
+The posts were generally understandable because the taxonomy provided explicit definitions and decision rules.
+
+However, several examples required careful interpretation, especially posts containing numerical details that did not necessarily constitute an argument.
+
+The 100% agreement suggests that the written rules were sufficiently clear for this particular set and that I applied them consistently with the staff labels.
+
+It does not prove that the taxonomy would produce the same agreement rate on a larger or more difficult collection.
+
+### Relationship to the GRC Classifier
+
+The staff exercise was separate from the GRC classification dataset.
+
+The staff labels were:
+
+* `analysis`
+* `hot_take`
+* `reaction`
+
+The GRC labels were:
+
+* `ai_governance_policy`
+* `ai_security_risk`
+* `compliance_implementation`
+* `vendor_third_party_risk`
+
+Therefore, the 30 staff-labeled posts were **not added to the GRC training dataset**.
+
+The GRC dataset remains at 20 labeled examples.
+
+The staff exercise provides evidence of consistent application of an externally supplied taxonomy, but further independent review would be needed to establish agreement on the GRC taxonomy.
 
 ---
 
@@ -573,13 +718,13 @@ The evidence suggests that increasing labeled-data coverage and improving evalua
 
 ### Acceptance Criteria After Improvement
 
-| # | Criterion                | Target                                | After Verdict    |
-| - | ------------------------ | ------------------------------------- | ---------------- |
-| 1 | Held-out accuracy        | At least 72.5% across seeds           | **MISSED**       |
-| 2 | Per-label F1             | At least 0.50 across labels and seeds | **MISSED**       |
-| 3 | Maximum class proportion | No class above 40%                    | **MET**          |
-| 4 | Reviewer agreement       | At least 90%                          | **NOT MEASURED** |
-| 5 | High-confidence accuracy | At least 80% above 77.5% confidence   | **NOT MEASURED** |
+| # | Criterion                | Target                                | After Verdict                    |
+| - | ------------------------ | ------------------------------------- | -------------------------------- |
+| 1 | Held-out accuracy        | At least 72.5% across seeds           | **MISSED**                       |
+| 2 | Per-label F1             | At least 0.50 across labels and seeds | **MISSED**                       |
+| 3 | Maximum class proportion | No class above 40%                    | **MET**                          |
+| 4 | Reviewer agreement       | At least 90%                          | **MET ON STAFF EXERCISE (100%)** |
+| 5 | High-confidence accuracy | At least 80% above 77.5% confidence   | **NOT ESTABLISHED**              |
 
 No original acceptance threshold was changed.
 
@@ -589,7 +734,7 @@ No original acceptance threshold was changed.
 
 ### 1. Dataset Size
 
-The project currently contains 20 labeled examples rather than the required minimum of 150.
+The project currently contains 20 labeled GRC examples rather than the required minimum of 150.
 
 **Next step:** Continue manually labeling candidate discussions and prioritize coverage of underrepresented categories.
 
@@ -613,29 +758,23 @@ Several categories achieved zero F1.
 
 **Next step:** Inspect individual false positives and false negatives, especially between overlapping GRC categories.
 
-### 5. Missing Reviewer Agreement
+### 5. GRC-Specific Reviewer Agreement Not Tested
 
-The staff labeling and adjudication exercise is incomplete.
+The separate staff-labeling exercise achieved 100% agreement, but the GRC dataset has not undergone an equivalent independent review.
 
-**Next step:** Label the 30 staff examples using the staff taxonomy, calculate agreement, and document every disagreement.
+**Next step:** Ask an independent reviewer to label a sample of GRC posts and compare their labels against the project annotations.
 
-### 6. Missing Confidence Analysis
+### 6. High-Confidence Threshold Not Evaluated
 
-The high-confidence acceptance criterion has not been evaluated.
+The saved evaluation contains summary confidence statistics but does not establish accuracy for predictions exceeding the original 77.5% threshold.
 
-**Next step:** Export prediction probabilities and evaluate predictions above the original 77.5% confidence threshold.
+**Next step:** Save individual prediction probabilities and calculate confidence-filtered accuracy.
 
 ### 7. Evaluation Reliability
 
 Each seed currently evaluates only three held-out examples.
 
 **Next step:** Increase test-set size and use class-representative splits where feasible.
-
-### 8. Confusion Matrix Documentation
-
-The exact confusion-matrix counts have not been included in this report.
-
-**Next step:** Extract the matrix from the saved predictions and include it as a Markdown table.
 
 ### The Gap Between Intended Labels and Learned Behavior
 
@@ -645,7 +784,7 @@ However, the model has not demonstrated reliable recognition of all four categor
 
 The available results suggest that the model is learning some governance-related patterns while failing to generalize consistently across the remaining categories.
 
-The current evidence is insufficient to determine the exact contribution of taxonomy ambiguity versus limited training data.
+The completed staff agreement exercise supports the ability to apply a written taxonomy consistently, but it does not establish that the project's GRC taxonomy is free of ambiguity.
 
 ---
 
@@ -664,9 +803,11 @@ Activities included:
 7. Organizing the three-seed evaluation workflow.
 8. Interpreting accuracy and macro F1 results.
 9. Preparing the before-and-after comparison.
-10. Structuring the final project documentation.
+10. Interpreting the staff taxonomy and reviewing staff-labeling examples.
+11. Structuring the confusion matrix and error diagnosis.
+12. Preparing the final project documentation.
 
-The reported evaluation numbers come from the executed experiments rather than AI-generated estimates.
+The reported evaluation numbers come from executed experiments and the saved agreement report rather than AI-generated estimates.
 
 Uncompleted measurements are identified explicitly instead of being presented as completed work.
 
@@ -676,19 +817,26 @@ Uncompleted measurements are identified explicitly instead of being presented as
 
 ### Project Files
 
-| File                              | Purpose                             |
-| --------------------------------- | ----------------------------------- |
-| `takemeter.ipynb`                 | Training and evaluation notebook    |
-| `labels.csv`                      | Manually labeled GRC discussions    |
-| `label_definitions.txt`           | Label descriptions                  |
-| `criteria.md`                     | Original acceptance criteria        |
-| `baseline.py`                     | Zero-shot baseline evaluation       |
-| `baseline_results.json`           | Baseline evaluation results         |
-| `results.json`                    | Initial trained-model evaluation    |
-| `test_split.csv`                  | Saved initial test split            |
-| `results_three_seeds_before.json` | Three-seed evaluation with 3 epochs |
-| `results_three_seeds_after.json`  | Three-seed evaluation with 5 epochs |
-| `RUNNING.md`                      | Setup and execution instructions    |
+| File                              | Purpose                                               |
+| --------------------------------- | ----------------------------------------------------- |
+| `takemeter.ipynb`                 | Training and evaluation notebook                      |
+| `labels.csv`                      | Manually labeled GRC discussions                      |
+| `label_definitions.txt`           | GRC label descriptions                                |
+| `criteria.md`                     | Original acceptance criteria                          |
+| `baseline.py`                     | Zero-shot baseline evaluation                         |
+| `baseline_results.json`           | Baseline evaluation results                           |
+| `results.json`                    | Initial trained-model evaluation and confusion matrix |
+| `test_split.csv`                  | Saved initial test split                              |
+| `results_three_seeds_before.json` | Three-seed evaluation with 3 epochs                   |
+| `results_three_seeds_after.json`  | Three-seed evaluation with 5 epochs                   |
+| `data/staff_posts.csv`            | Staff evaluation posts                                |
+| `data/staff_taxonomy.md`          | Staff taxonomy and decision rules                     |
+| `my_staff_labels.csv`             | My labels for the 30 staff posts                      |
+| `agreement.py`                    | Staff agreement evaluation script                     |
+| `agreement_results.json`          | Verified staff agreement results                      |
+| `RUNNING.md`                      | Setup and execution instructions                      |
+
+The official staff reference file, `data/staff_labels.csv`, is obtained from the course staff after independently completing the staff labels.
 
 ### How to Run
 
@@ -718,6 +866,14 @@ Run the zero-shot baseline with:
 python baseline.py
 ```
 
+To reproduce the staff agreement exercise, first prepare `my_staff_labels.csv` using the staff taxonomy and obtain the official staff reference labels.
+
+Then run:
+
+```bash
+python agreement.py
+```
+
 The notebook and scripts save evaluation results as JSON files for later comparison.
 
 ---
@@ -728,20 +884,34 @@ This project investigated whether a fine-tuned DistilBERT model could classify i
 
 The initial three-seed experiment achieved:
 
-* Mean accuracy: **33.3%**
-* Mean macro F1: **0.217**
+* **Mean accuracy:** 33.3%.
+* **Mean macro F1:** 0.217.
 
 The five-epoch improvement experiment produced identical held-out metrics.
 
 The zero-shot baseline achieved 0% accuracy on the three-example seed 42 test split, compared with 66.7% for the fine-tuned model.
 
-However, the results remain unstable and do not satisfy the original accuracy and per-label F1 acceptance criteria.
+The confusion matrix identified one vendor-risk discussion incorrectly classified as governance.
 
-The most important limitations are the small labeled dataset, uneven category representation, and very small test splits.
+The separate staff taxonomy exercise achieved:
+
+* **30 agreements out of 30 posts.**
+* **100% agreement.**
+* **Zero disagreements requiring adjudication.**
+
+This completed the staff agreement exercise successfully. However, it does not establish agreement on the project's separate GRC taxonomy.
+
+The original GRC classifier still does not satisfy the accuracy or per-label F1 acceptance criteria.
+
+The confidence-filtered accuracy criterion also remains unverified.
+
+The most important limitations are the small labeled GRC dataset, uneven category representation, and very small test splits.
 
 **The main finding is that additional training epochs did not improve performance under the current data conditions.**
 
-Future development should prioritize more labeled examples, stronger class coverage, reviewer agreement testing, and larger evaluation sets before considering the classifier reliable for practical GRC applications.
+The project also demonstrated successful application of a separate, written staff taxonomy with complete agreement on the supplied evaluation set.
+
+Future development should prioritize expanding the GRC dataset to at least 150 labeled examples, improving class coverage, obtaining independent GRC label reviews, and evaluating on larger test sets before considering the classifier reliable for practical GRC applications.
 
 ---
 

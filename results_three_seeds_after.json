@@ -1,0 +1,209 @@
+[
+  {
+    "seed": 42,
+    "n_test": 3,
+    "accuracy": 0.6666666666666666,
+    "f1_macro": 0.4,
+    "per_label": {
+      "ai_governance_policy": {
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f1": 0.8,
+        "support": 2
+      },
+      "ai_security_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "compliance_implementation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "vendor_third_party_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1
+      }
+    },
+    "confusion": {
+      "ai_governance_policy": {
+        "ai_governance_policy": 2,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      },
+      "ai_security_risk": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      },
+      "compliance_implementation": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      },
+      "vendor_third_party_risk": {
+        "ai_governance_policy": 1,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.26983171701431274,
+      "mean_when_wrong": 0.2732459008693695,
+      "accuracy_most_confident_third": 0.0,
+      "accuracy_least_confident_third": 1.0,
+      "n_per_third": 1
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  },
+  {
+    "seed": 7,
+    "n_test": 3,
+    "accuracy": 0.0,
+    "f1_macro": 0.0,
+    "per_label": {
+      "ai_governance_policy": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 3
+      },
+      "ai_security_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "compliance_implementation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "vendor_third_party_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      }
+    },
+    "confusion": {
+      "ai_governance_policy": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 3,
+        "vendor_third_party_risk": 0
+      },
+      "ai_security_risk": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      },
+      "compliance_implementation": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      },
+      "vendor_third_party_risk": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      }
+    },
+    "confidence": {
+      "mean_when_right": null,
+      "mean_when_wrong": 0.28314438462257385,
+      "accuracy_most_confident_third": 0.0,
+      "accuracy_least_confident_third": 0.0,
+      "n_per_third": 1
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  },
+  {
+    "seed": 2024,
+    "n_test": 3,
+    "accuracy": 0.3333333333333333,
+    "f1_macro": 0.25,
+    "per_label": {
+      "ai_governance_policy": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "ai_security_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "compliance_implementation": {
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "support": 1
+      },
+      "vendor_third_party_risk": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2
+      }
+    },
+    "confusion": {
+      "ai_governance_policy": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      },
+      "ai_security_risk": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 0,
+        "vendor_third_party_risk": 0
+      },
+      "compliance_implementation": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 1,
+        "vendor_third_party_risk": 0
+      },
+      "vendor_third_party_risk": {
+        "ai_governance_policy": 0,
+        "ai_security_risk": 0,
+        "compliance_implementation": 2,
+        "vendor_third_party_risk": 0
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.32934102416038513,
+      "mean_when_wrong": 0.32020968198776245,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.0,
+      "n_per_third": 1
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  }
+]
